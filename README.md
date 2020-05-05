@@ -22,6 +22,14 @@ yarn add react-native-expo-image-cache
 
 ## Usage
 
+### Props
+
+| Props        | Default     | Options  |
+| ------------- |:-------------:| -----:|
+| tint      | dark | light, dark, default |
+| transitionDuration     | 300      | custom in ms |
+
+
 ### <Image>
 
 ```js
@@ -41,7 +49,8 @@ Get the local image from a remote URI
 import {CacheManager} from "react-native-expo-image-cache";
 
 const {uri} = this.props;
-CacheManager.cache(uri, newURI => this.setState({ uri: newURI }));
+const path = await CacheManager.get(uri).getPath();
+// if path is undefined, the image download has failed 
 ```
 
 You can also clear the local cache:
